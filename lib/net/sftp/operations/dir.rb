@@ -45,6 +45,29 @@ module Net; module SFTP; module Operations
       return results
     end
 
+
+    # foreach method, used for enum_entries
+    def foreach_entries(path)
+      handle = sftp.opendir!(path)
+      while entries = sftp.readdir!(handle)
+        yield entries
+      end
+      return nil
+    ensure
+      sftp.close!(handle) if handle
+    end
+
+    # Returns an array of Name objects representing the items in the given
+    # remote directory, +path+.
+    # using Enumerator
+    def each_entries(path)
+      Enumerator.new do |yielder|
+        foreach_entries(path) do |entries|
+          entries.lazy.each { |entry| yielder << entry }
+        end
+      end
+    end
+
     # Works as ::Dir.glob, matching (possibly recursively) all directory
     # entries under +path+ against +pattern+. If a block is given, matches
     # will be yielded to the block as they are found; otherwise, they will
