@@ -22,7 +22,6 @@ Gem::Specification.new do |s|
     "Manifest",
     "README.rdoc",
     "Rakefile",
-    "gem-public_cert.pem",
     "lib/net/sftp.rb",
     "lib/net/sftp/constants.rb",
     "lib/net/sftp/errors.rb",
