@@ -80,7 +80,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubyforge_project = "net-sftp"
   s.rubygems_version = "1.8.25"
-  s.signing_key = "/mnt/gem/gem-private_key.pem"
+  # s.signing_key = "/mnt/gem/gem-private_key.pem"
   s.summary = "A pure Ruby implementation of the SFTP client protocol"
 
   if s.respond_to? :specification_version then
